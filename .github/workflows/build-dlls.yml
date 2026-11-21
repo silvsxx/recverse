@@ -23,29 +23,32 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Build version.dll (proxy)
-        working-directory: recverse-windows/version-proxy
+        working-directory: ${{ github.workspace }}\recverse-windows\version-proxy
+        shell: pwsh
         run: |
           cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64
           cmake --build build --config Release --parallel
 
       - name: Build versemain.dll (main integration)
-        working-directory: recverse-windows/versemain
+        working-directory: ${{ github.workspace }}\recverse-windows\versemain
+        shell: pwsh
         run: |
           cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64
           cmake --build build --config Release --parallel
 
       - name: Verify DLLs exist
+        shell: pwsh
         run: |
-          ls -la recverse-windows/version-proxy/build/Release/version.dll
-          ls -la recverse-windows/versemain/build/Release/versemain.dll
+          ls -la ${{ github.workspace }}\recverse-windows\version-proxy\build\Release\version.dll
+          ls -la ${{ github.workspace }}\recverse-windows\versemain\build\Release\versemain.dll
 
       - name: Upload DLLs as Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: recverse-dlls
           path: |
-            recverse-windows/version-proxy/build/Release/version.dll
-            recverse-windows/versemain/build/Release/versemain.dll
+            ${{ github.workspace }}\recverse-windows\version-proxy\build\Release\version.dll
+            ${{ github.workspace }}\recverse-windows\versemain\build\Release\versemain.dll
           retention-days: 30
 
       - name: Create Release (on tag)
