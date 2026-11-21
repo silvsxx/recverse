@@ -164,7 +164,7 @@ router.post('/report', async (req, res) => {
   // Would create report
 
   res.json({ success: true });
-}
+});
 
 // ============================================================
 // HEALTH CHECK
