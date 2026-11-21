@@ -1,0 +1,72 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.sqlite
+*.db
+
+# Storage
+storage/
+uploads/
+*.tmp
+
+# Windows native builds (source kept, only build outputs ignored)
+recverse-windows/**/build/
+recverse-windows/**/x64/Release/
+recverse-windows/**/x64/Build/
+recverse-windows/**/*.dll
+recverse-windows/**/*.lib
+recverse-windows/**/*.exp
+recverse-windows/**/*.pdb
+recverse-windows/**/*.ilk
+recverse-windows/**/Injector.exe
+recverse-windows/**/*.ini
+
+# RecFlare source repos (cloned for reference - not tracked)
+vendor/
+recverse-source-*/
+
+# Local development directories (not for deployment)
+recverse-client/
+recverse-windows/
+
+# Test coverage
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Fix scripts (generated)
+fix-*.ps1

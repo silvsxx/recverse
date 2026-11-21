@@ -1,0 +1,49 @@
+{
+  "name": "recverse",
+  "version": "1.0.0",
+  "description": "RecVerse - Rec Room compatible backend and client integration based on RecFlare",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test tests/**/*.test.js",
+    "patcher": "node patcher.js",
+    "terminal": "node terminal.js",
+    "migrate": "node database/migrate.js",
+    "build:windows": "cd recverse-windows && cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+  },
+  "keywords": [
+    "recverse",
+    "rec-room",
+    "recflare",
+    "backend",
+    "patcher"
+  ],
+  "author": "RecVerse Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "uuid": "^10.0.0",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "winston": "^3.13.0",
+    "js-yaml": "^4.1.0",
+    "axios": "^1.7.2",
+    "form-data": "^4.0.0",
+    "multiparty": "^4.2.3",
+    "ws": "^8.18.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
