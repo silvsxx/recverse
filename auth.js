@@ -396,8 +396,8 @@ router.get('/eac/challenge', (req, res) => {
   res.send('"AA=="');
 });
 
-// Cached login for platform ID
-router.on(['GET', 'POST'], '/cachedlogin/forplatformid/:platform/:id', async (req, res) => {
+// Cached login for platform ID (GET and POST)
+const handleCachedLogin = async (req, res) => {
   const { platform, id } = req.params;
   const platformInt = parseInt(platform, 10);
 
@@ -445,7 +445,10 @@ router.on(['GET', 'POST'], '/cachedlogin/forplatformid/:platform/:id', async (re
     .filter(Boolean);
 
   res.json(cachedLogins);
-});
+};
+
+router.get('/cachedlogin/forplatformid/:platform/:id', handleCachedLogin);
+router.post('/cachedlogin/forplatformid/:platform/:id', handleCachedLogin);
 
 // Bulk cached login lookup
 router.post('/cachedlogin/forplatformids', async (req, res) => {
