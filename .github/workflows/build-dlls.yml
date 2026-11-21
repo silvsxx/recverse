@@ -23,13 +23,13 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Build version.dll (proxy)
-        working-directory: ./recverse-windows/version-proxy
+        working-directory: recverse-windows/version-proxy
         run: |
           cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64
           cmake --build build --config Release --parallel
 
       - name: Build versemain.dll (main integration)
-        working-directory: ./recverse-windows/versemain
+        working-directory: recverse-windows/versemain
         run: |
           cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Visual Studio 17 2022" -A x64
           cmake --build build --config Release --parallel
