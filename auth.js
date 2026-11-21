@@ -7,7 +7,7 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const { query, transaction } = require('./database');
 const { config } = require('./config');
-const { getAuthedAccountId } = require('./shared');
+const { getAuthedAccountId, RateLimiter } = require('./shared');
 
 const router = express.Router();
 
