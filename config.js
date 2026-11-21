@@ -48,13 +48,16 @@ function parseBool(value, defaultValue) {
   return lower === 'true' || lower === '1' || lower === 'yes' || lower === 'on';
 }
 
+// Build base URL first (needed for services)
+const publicBaseUrl = process.env.PUBLIC_BASE_URL || `http://localhost:${parseIntSafe(process.env.PORT, 3000)}`;
+
 // Build configuration object
 const config = {
   // Server
   env: process.env.NODE_ENV || 'development',
   host: process.env.HOST || '0.0.0.0',
   port: parseIntSafe(process.env.PORT, 3000),
-  publicBaseUrl: process.env.PUBLIC_BASE_URL || `http://localhost:${parseIntSafe(process.env.PORT, 3000)}`,
+  publicBaseUrl,
 
   // Database
   database: {
@@ -100,25 +103,25 @@ const config = {
 
   // RecNet Service URLs (for NameServer response)
   services: {
-    auth: process.env.RECNET_AUTH_URL || `${config.publicBaseUrl}/auth`,
-    api: process.env.RECNET_API_URL || `${config.publicBaseUrl}/api`,
-    accounts: process.env.RECNET_ACCOUNTS_URL || `${config.publicBaseUrl}/accounts`,
-    econ: process.env.RECNET_ECON_URL || `${config.publicBaseUrl}/econ`,
-    commerce: process.env.RECNET_COMMERCE_URL || `${config.publicBaseUrl}/commerce`,
-    rooms: process.env.RECNET_ROOMS_URL || `${config.publicBaseUrl}/rooms`,
-    match: process.env.RECNET_MATCH_URL || `${config.publicBaseUrl}/match`,
-    chat: process.env.RECNET_CHAT_URL || `${config.publicBaseUrl}/chat`,
-    notify: process.env.RECNET_NOTIFY_URL || `${config.publicBaseUrl}/notify`,
-    playersettings: process.env.RECNET_PLAYERSETTINGS_URL || `${config.publicBaseUrl}/playersettings`,
-    leaderboard: process.env.RECNET_LEADERBOARD_URL || `${config.publicBaseUrl}/leaderboard`,
-    discovery: process.env.RECNET_DISCOVERY_URL || `${config.publicBaseUrl}/discovery`,
-    cdn: process.env.RECNET_CDN_URL || `${config.publicBaseUrl}/cdn`,
-    img: process.env.RECNET_IMG_URL || `${config.publicBaseUrl}/img`,
-    studio: process.env.RECNET_STUDIO_URL || `${config.publicBaseUrl}/studio`,
-    data: process.env.RECNET_DATA_URL || `${config.publicBaseUrl}/data`,
-    lists: process.env.RECNET_LISTS_URL || `${config.publicBaseUrl}/lists`,
-    roomcomments: process.env.RECNET_ROOMCOMMENTS_URL || `${config.publicBaseUrl}/roomcomments`,
-    datacollection: process.env.RECNET_DATACOLLECTION_URL || `${config.publicBaseUrl}/datacollection`,
+    auth: process.env.RECNET_AUTH_URL || `${publicBaseUrl}/auth`,
+    api: process.env.RECNET_API_URL || `${publicBaseUrl}/api`,
+    accounts: process.env.RECNET_ACCOUNTS_URL || `${publicBaseUrl}/accounts`,
+    econ: process.env.RECNET_ECON_URL || `${publicBaseUrl}/econ`,
+    commerce: process.env.RECNET_COMMERCE_URL || `${publicBaseUrl}/commerce`,
+    rooms: process.env.RECNET_ROOMS_URL || `${publicBaseUrl}/rooms`,
+    match: process.env.RECNET_MATCH_URL || `${publicBaseUrl}/match`,
+    chat: process.env.RECNET_CHAT_URL || `${publicBaseUrl}/chat`,
+    notify: process.env.RECNET_NOTIFY_URL || `${publicBaseUrl}/notify`,
+    playersettings: process.env.RECNET_PLAYERSETTINGS_URL || `${publicBaseUrl}/playersettings`,
+    leaderboard: process.env.RECNET_LEADERBOARD_URL || `${publicBaseUrl}/leaderboard`,
+    discovery: process.env.RECNET_DISCOVERY_URL || `${publicBaseUrl}/discovery`,
+    cdn: process.env.RECNET_CDN_URL || `${publicBaseUrl}/cdn`,
+    img: process.env.RECNET_IMG_URL || `${publicBaseUrl}/img`,
+    studio: process.env.RECNET_STUDIO_URL || `${publicBaseUrl}/studio`,
+    data: process.env.RECNET_DATA_URL || `${publicBaseUrl}/data`,
+    lists: process.env.RECNET_LISTS_URL || `${publicBaseUrl}/lists`,
+    roomcomments: process.env.RECNET_ROOMCOMMENTS_URL || `${publicBaseUrl}/roomcomments`,
+    datacollection: process.env.RECNET_DATACOLLECTION_URL || `${publicBaseUrl}/datacollection`,
   },
 
   // Photon Configuration (for client-side redirection via patcher/versemain.dll)
